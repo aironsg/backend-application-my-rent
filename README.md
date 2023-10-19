@@ -95,7 +95,7 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
   "email": "email@example.com",
   "cpf": "123.456.789-00",
   "phone": "(11) 99999-9999",
-  "address": {
+  "addressEntity": {
     "zipCode": "12345-678",
     "state": "SP",
     "city": "São Paulo",
@@ -115,7 +115,7 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
   "email": "tenant@example.com",
   "cpf": "987.654.321-00",
   "phone": "(11) 88888-8888",
-  "address": {
+  "addressEntity": {
     "zipCode": "54321-876",
     "state": "SP",
     "city": "São Paulo",
@@ -143,7 +143,7 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
 ### Objeto User Imóvel
 ```json
 {
-  "address": {
+  "addressEntity": {
     "zipCode": "12345-678",
     "state": "SP",
     "city": "São Paulo",
@@ -162,7 +162,7 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
 ```json
 {
    "ownerName": "John Doe",
-   "address": "123 Main Street, Apt 4B",
+   "addressEntity": "123 Main Street, Apt 4B",
    "property": "Ocean View Condo",
    "residentName": "Jane Smith",
    "rentAmount": 1200.00,

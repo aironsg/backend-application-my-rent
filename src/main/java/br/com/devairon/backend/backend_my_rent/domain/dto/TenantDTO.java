@@ -1,8 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-import br.com.devairon.backend.backend_my_rent.domain.entity.AddressOwnerEntity;
-import br.com.devairon.backend.backend_my_rent.domain.enums.TypePlan;
-import br.com.devairon.backend.backend_my_rent.domain.enums.TypeUser;
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressPropertyEntity;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -10,9 +8,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.List;
+import java.util.Date;
 
-public record OwnerDTO(
+public record TenantDTO(
         @NotBlank
         @NotNull
         @Size(min = 5, max = 30)
@@ -29,10 +27,15 @@ public record OwnerDTO(
         @NotBlank
         String cpf,
 
+        @NotNull
+        Date rentDate,
 
-        List<AddressOwnerEntity> address,
+        @NotNull
+        @NotBlank
+        int quantityDependents,
 
-        TypeUser type,
-        TypePlan typePlan
+        @NotNull
+        AddressPropertyEntity addressProperty
+
 ) {
 }
