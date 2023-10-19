@@ -1,4 +1,19 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-public class PropertyDTO {
+import br.com.devairon.backend.backend_my_rent.domain.enums.OccupationStatus;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+public record PropertyDTO(
+        @NotBlank
+        @NotNull
+        String description,
+        @Positive
+        int quantityRooms,
+        @Positive
+        double rentValue,
+        AddressPropertyEntity addressProperty,
+        OccupationStatus occupationStatus
+) {
 }

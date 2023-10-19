@@ -16,9 +16,9 @@ public class PropertyEntity {
     private String description;
     private int quantityRooms;
     private double rentValue;
-    @ManyToOne
-    @JoinColumn(name = "property_id", referencedColumnName = "id")
-    private AddressPropertyEntity addressProperty;
+
+    @OneToOne
+    private AddressEntity addressProperty;
     private OccupationStatus occupationStatus;
 
 }

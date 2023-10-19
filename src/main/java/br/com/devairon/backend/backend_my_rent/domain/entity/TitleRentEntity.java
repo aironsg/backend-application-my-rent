@@ -2,6 +2,9 @@ package br.com.devairon.backend.backend_my_rent.domain.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Entity
 @Table(name = "tb_titulo_aluguel")
 public class TitleRentEntity {
@@ -15,8 +18,12 @@ public class TitleRentEntity {
     @OneToOne
     private OwnerEntity owner;
     @OneToOne
-    private AddressPropertyEntity addressProperty;
+    private AddressEntity address;
+    @OneToOne
+    private PropertyEntity property;
     private double valueRent;
     private int contractLengthInMonths;
     private boolean active;
+    private LocalDate contractStartDate;
+    private LocalDate contractEndDate;
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,11 +17,11 @@ public class TenantEntity extends  UserEntity{
     private int quantityDepedents;
 
     @OneToOne
-    private AddressPropertyEntity address;
+    private AddressEntity address;
 
     private TypeUser typeUser;
 
-    private Date rentDate;
+    private LocalDate rentDate;
 
 
 

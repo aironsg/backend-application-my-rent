@@ -1,10 +1,13 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-import br.com.devairon.backend.backend_my_rent.domain.entity.AddressPropertyEntity;
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import br.com.devairon.backend.backend_my_rent.domain.entity.OwnerEntity;
+import br.com.devairon.backend.backend_my_rent.domain.entity.PropertyEntity;
 import br.com.devairon.backend.backend_my_rent.domain.entity.TenantEntity;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+
+import java.time.LocalDate;
 
 public record TitleRentDTO(
         @NotNull
@@ -12,11 +15,18 @@ public record TitleRentDTO(
         @NotNull
         OwnerEntity owner,
         @NotNull
-        AddressPropertyEntity addressProperty,
+        AddressEntity addressProperty,
+        @NotNull
+        PropertyEntity property,
         @Positive
         double valueRent,
         @Positive
         int contractLengthInMonths,
-        boolean active
+        boolean active,
+
+        @NotNull
+        LocalDate contractStartDate,
+        @NotNull
+        LocalDate contractEndDate
 ) {
 }

@@ -1,6 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-import br.com.devairon.backend.backend_my_rent.domain.entity.AddressOwnerEntity;
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import br.com.devairon.backend.backend_my_rent.domain.enums.TypePlan;
 import br.com.devairon.backend.backend_my_rent.domain.enums.TypeUser;
 import jakarta.persistence.Column;
@@ -30,7 +30,7 @@ public record OwnerDTO(
         String cpf,
 
 
-        List<AddressOwnerEntity> address,
+        AddressEntity address,
 
         TypeUser type,
         TypePlan typePlan

@@ -1,6 +1,5 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-import br.com.devairon.backend.backend_my_rent.domain.entity.AddressPropertyEntity;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public record TenantDTO(
         @NotBlank
@@ -28,7 +27,7 @@ public record TenantDTO(
         String cpf,
 
         @NotNull
-        Date rentDate,
+        LocalDate rentDate,
 
         @NotNull
         @NotBlank

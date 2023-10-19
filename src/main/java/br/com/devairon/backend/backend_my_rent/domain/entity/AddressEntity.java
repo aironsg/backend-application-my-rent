@@ -6,18 +6,15 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Table(name = "tb_endereco")
 @NoArgsConstructor
 @AllArgsConstructor
 public  class AddressEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
-
     private String zipCode;
-
     @NotNull
     @NotBlank
     private String state;
