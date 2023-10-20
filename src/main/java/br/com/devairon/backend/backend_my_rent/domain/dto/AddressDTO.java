@@ -2,26 +2,33 @@ package br.com.devairon.backend.backend_my_rent.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record AddressDTO(
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AddressDTO{
         @NotNull
         @NotBlank
-        String zipCode,
+        String zipCode;
         @NotNull
         @NotBlank
-        String state,
+        String state;
         @NotNull
         @NotBlank
-        String city,
+        String city;
         @NotNull
         @NotBlank
-        String neighborhood,
+        String neighborhood;
         @NotNull
         @NotBlank
-        String street,
+        String street;
         @NotNull
         @NotBlank
-        String number
+        String numbe;
 
-) {
+
 }

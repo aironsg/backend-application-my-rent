@@ -6,27 +6,32 @@ import br.com.devairon.backend.backend_my_rent.domain.entity.PropertyEntity;
 import br.com.devairon.backend.backend_my_rent.domain.entity.TenantEntity;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-
-public record TitleRentDTO(
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class TitleRentDTO
+ {
         @NotNull
-        TenantEntity tenant,
+        TenantEntity tenant;
         @NotNull
-        OwnerEntity owner,
+        OwnerEntity owner;
         @NotNull
-        AddressEntity addressProperty,
+        AddressEntity addressProperty;
         @NotNull
-        PropertyEntity property,
+        PropertyEntity property;
         @Positive
-        double valueRent,
+        double valueRent;
         @Positive
-        int contractLengthInMonths,
-        boolean active,
+        int contractLengthInMonths;
+        boolean active;
 
         @NotNull
-        LocalDate contractStartDate,
+        LocalDate contractStartDate;
         @NotNull
-        LocalDate contractEndDate
-) {
+        LocalDate contractEndDate;
 }
