@@ -1,22 +1,25 @@
 package br.com.devairon.backend.backend_my_rent.domain.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@MappedSuperclass
-@Data
+
+
+@Entity
+@Table(name = "address")
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
-
+public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String phoneNumber;
-    private String email;
-    private String cpf;
 
+    private String zipCode;
+    private String state;
+    private String city;
+    private String neighborhood;
+    private String street;
+    private String number;
 }
