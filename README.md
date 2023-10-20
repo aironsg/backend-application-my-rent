@@ -21,6 +21,8 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
 
 3. **Registro de Endereço (RF03)**:
     - O sistema permite o cadastro separado de endereços no banco de dados.
+    - O sistema não permitirá cadastro de endereço com dados em branco, salvo o item abaixo.
+    - O sistema deve permitir que o campo CEP possa ficar vazio e frontend colocará uma string vazia por padrão.
     - O ADM do imóvel faz o registro dos imóveis, fornecendo detalhes como CEP, UF, estado, cidade, bairro, rua e número do imóvel.
 
 4. **Registro de Imóvel (RF04)**:

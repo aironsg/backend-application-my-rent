@@ -3,6 +3,7 @@ package br.com.devairon.backend.backend_my_rent.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "address")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
