@@ -6,18 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tb_imovel")
+@Table(name = "property")
 @Data
 @NoArgsConstructor
 public class PropertyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String description;
     private int quantityRooms;
     private double rentValue;
 
     @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity addressProperty;
     private OccupationStatus occupationStatus;
 

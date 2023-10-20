@@ -27,6 +27,7 @@ public record OwnerDTO(
         @CPF
         @NotNull
         @NotBlank
+        @Size(max = 15)
         String cpf,
 
 

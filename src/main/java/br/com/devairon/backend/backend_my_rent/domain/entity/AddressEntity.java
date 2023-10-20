@@ -1,33 +1,25 @@
 package br.com.devairon.backend.backend_my_rent.domain.entity;
 
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+
+
 @Entity
-@Table(name = "tb_endereco")
+@Table(name = "address")
 @NoArgsConstructor
 @AllArgsConstructor
-public  class AddressEntity {
+public class AddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
+
     private String zipCode;
-    @NotNull
-    @NotBlank
     private String state;
-    @NotNull
-    @NotBlank
     private String city;
-    @NotNull
-    @NotBlank
     private String neighborhood;
-    @NotNull
-    @NotBlank
     private String street;
-    @NotNull
-    @NotBlank
     private String number;
 }

@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_proprietario")
+@Table(name = "owner")
 @Data
 @NoArgsConstructor
 public class OwnerEntity extends UserEntity {
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity address;
     private TypeUser type;
     private TypePlan typePlan;

@@ -1,5 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import br.com.devairon.backend.backend_my_rent.domain.enums.OccupationStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +14,7 @@ public record PropertyDTO(
         int quantityRooms,
         @Positive
         double rentValue,
-        AddressPropertyEntity addressProperty,
+        AddressEntity addressProperty,
         OccupationStatus occupationStatus
 ) {
 }

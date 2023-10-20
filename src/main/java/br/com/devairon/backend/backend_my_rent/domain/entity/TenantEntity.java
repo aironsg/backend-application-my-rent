@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_inquilino")
+@Table(name = "tenant")
 @Data
 @NoArgsConstructor
 public class TenantEntity extends  UserEntity{
@@ -17,6 +17,7 @@ public class TenantEntity extends  UserEntity{
     private int quantityDepedents;
 
     @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity address;
 
     private TypeUser typeUser;

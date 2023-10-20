@@ -1,5 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -34,7 +35,7 @@ public record TenantDTO(
         int quantityDependents,
 
         @NotNull
-        AddressPropertyEntity addressProperty
+        AddressEntity addressProperty
 
 ) {
 }
