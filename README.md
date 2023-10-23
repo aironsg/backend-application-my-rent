@@ -1,11 +1,11 @@
 
 # Documentação do Sistema My-Rent
 
-## Visão Geral
+# Visão Geral
 
 O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa proporcionar uma solução automatizada para proprietários (ADM) e locatários (moradores). O sistema aborda várias funcionalidades, incluindo o cadastro de proprietários e locatários, registro de imóveis, seleção de planos, gerenciamento de contratos, notificações, segurança e mais.
 
-## Requisitos Funcionais
+# Requisitos Funcionais
 
 ### Cadastro de Usuários:
 
@@ -72,7 +72,7 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
 - ADMs têm a capacidade de atualizar informações nos contratos de aluguel, como a duração do contrato e o valor do aluguel, se necessário.
 - Locatários podem atualizar informações adicionais, como seus próprios dados pessoais.
 
-## Requisitos Não Funcionais
+# Requisitos Não Funcionais
 
 ### Requisitos Não Funcionais (Backend):
 

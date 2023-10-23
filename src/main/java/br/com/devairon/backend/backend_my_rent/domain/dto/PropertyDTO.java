@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PropertyDTO
  {
+        Long id;
         @NotBlank
         @NotNull
         String description;

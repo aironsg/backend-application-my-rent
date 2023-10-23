@@ -18,6 +18,7 @@ import java.time.LocalDate;
 public class TenantDTO
 
  {
+        Long id;
         @NotBlank
         @NotNull
         @Size(min = 5, max = 30)

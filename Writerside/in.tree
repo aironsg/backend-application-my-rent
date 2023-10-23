@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="in"
+                  name="documentationBackend" start-page="README.md">
+
+    <toc-element topic="README.md"/>
+    <toc-element toc-title="backend-my-rent">
+        <toc-element topic="HELP.md"/>
+    </toc-element>
+</instance-profile>

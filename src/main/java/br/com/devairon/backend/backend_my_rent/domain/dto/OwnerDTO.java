@@ -17,6 +17,8 @@ import org.hibernate.validator.constraints.br.CPF;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OwnerDTO {
+
+    Long id;
     @NotBlank
     @NotNull
     @Size(min = 5, max = 30)

@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class TitleRentDTO
  {
+        Long id;
         @NotNull
         TenantEntity tenant;
         @NotNull
