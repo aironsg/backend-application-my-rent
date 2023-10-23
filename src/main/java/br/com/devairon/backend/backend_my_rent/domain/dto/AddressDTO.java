@@ -11,12 +11,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressDTO{
-        @NotNull
-        @NotBlank
+
+        Long id;
         String zipCode;
         @NotNull
         @NotBlank
         String state;
+        @NotNull
+        @NotBlank
+        String UF;
         @NotNull
         @NotBlank
         String city;
@@ -28,7 +31,7 @@ public class AddressDTO{
         String street;
         @NotNull
         @NotBlank
-        String numbe;
+        String number;
 
 
 }

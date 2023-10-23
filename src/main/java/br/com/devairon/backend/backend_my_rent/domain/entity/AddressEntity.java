@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 
 
-@Entity
+@Entity(name = "address")
 @Table(name = "address")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,6 +20,7 @@ public class AddressEntity {
 
     private String zipCode;
     private String state;
+    private String UF;
     private String city;
     private String neighborhood;
     private String street;
