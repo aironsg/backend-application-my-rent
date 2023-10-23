@@ -13,8 +13,6 @@ import lombok.Setter;
 public class AddressDTO{
 
         Long id;
-        @NotNull
-        @NotBlank
         String zipCode;
         @NotNull
         @NotBlank
@@ -33,7 +31,7 @@ public class AddressDTO{
         String street;
         @NotNull
         @NotBlank
-        String numbe;
+        String number;
 
 
 }

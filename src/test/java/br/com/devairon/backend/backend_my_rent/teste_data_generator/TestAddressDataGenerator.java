@@ -11,10 +11,11 @@ public class TestAddressDataGenerator {
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setZipCode(faker.address().zipCode());
         addressDTO.setState(faker.address().state());
+        addressDTO.setUF(faker.address().state());
         addressDTO.setCity(faker.address().cityName());
         addressDTO.setNeighborhood(faker.address().city());
         addressDTO.setStreet(faker.address().streetName());
-        addressDTO.setNumbe(faker.address().buildingNumber());
+        addressDTO.setNumber(faker.address().buildingNumber());
         return addressDTO;
     }
 
@@ -22,10 +23,11 @@ public class TestAddressDataGenerator {
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setZipCode("");
         addressDTO.setState(faker.address().state());
+        addressDTO.setUF(faker.address().state());
         addressDTO.setCity(faker.address().cityName());
         addressDTO.setNeighborhood(faker.address().city());
         addressDTO.setStreet(faker.address().streetName());
-        addressDTO.setNumbe(faker.address().buildingNumber());
+        addressDTO.setNumber(faker.address().buildingNumber());
         return addressDTO;
     }
 
@@ -33,10 +35,11 @@ public class TestAddressDataGenerator {
         AddressDTO addressDTO = new AddressDTO();
         addressDTO.setZipCode("");
         addressDTO.setState("");
+        addressDTO.setUF("");
         addressDTO.setCity("");
         addressDTO.setNeighborhood("");
         addressDTO.setStreet("");
-        addressDTO.setNumbe("");
+        addressDTO.setNumber("");
         return addressDTO;
     }
 }

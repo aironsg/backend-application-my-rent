@@ -58,7 +58,7 @@ public class AddressService implements AddressUseCase {
             address.get().setState(request.getCity());
             address.get().setState(request.getNeighborhood());
             address.get().setState(request.getStreet());
-            address.get().setState(request.getNumbe());
+            address.get().setState(request.getNumber());
             repository.save(address.get());
             return Optional.of(mapper.map(address, AddressDTO.class));
         }
@@ -67,10 +67,8 @@ public class AddressService implements AddressUseCase {
 
     @Override
     public Optional<AddressDTO> getAddressById(Long id) {
-
            Optional<AddressEntity> address = repository.findById(String.valueOf(id));
            return address.map(response -> mapper.map(response, AddressDTO.class));
-
     }
 
     @Override

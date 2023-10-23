@@ -61,7 +61,7 @@ public class AddressServiceTest {
         assertTrue(response.get().getCity().isEmpty());
         assertTrue(response.get().getNeighborhood().isEmpty());
         assertTrue(response.get().getStreet().isEmpty());
-        assertTrue(response.get().getNumbe().isEmpty());
+        assertTrue(response.get().getNumber().isEmpty());
     }
 
     @Test
@@ -125,7 +125,7 @@ public class AddressServiceTest {
         newAddress.get().setCity("caruaru");
         newAddress.get().setNeighborhood("joao mota");
         newAddress.get().setStreet("lapaz");
-        newAddress.get().setNumbe("338");
+        newAddress.get().setNumber("338");
         Optional<AddressDTO> respone = service.updateAddressById(newAddress.get(), 1L);
         assertNotEquals(request, respone.get());
 
@@ -142,7 +142,7 @@ public class AddressServiceTest {
         newAddress.get().setCity("caruaru");
         newAddress.get().setNeighborhood("joao mota");
         newAddress.get().setStreet("lapaz");
-        newAddress.get().setNumbe("338");
+        newAddress.get().setNumber("338");
         Optional<AddressDTO> response = service.updateAddressById(newAddress.get(), 2L);
         assertFalse(response.isPresent());
 
