@@ -2,6 +2,7 @@ package br.com.devairon.backend.backend_my_rent.controller;
 
 import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
 import br.com.devairon.backend.backend_my_rent.teste_data_generator.TestAddressDataGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
@@ -103,5 +105,94 @@ public class AddressControllerTest {
 
     }
 
+    @Test
+    public void shouldGetAddressesByIdAndReturnStatusCodeOK() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(MockMvcRequestBuilders.post("/address")
+                .header(AUTHORIZATION, "Bearer ")
+                .contentType(APPLICATION_JSON)
+                .content(content)
+        );
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/address/1")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void shouldNotGetAddressesByIdNonexistentAndReturnStatusNotFound() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(MockMvcRequestBuilders.post("/address")
+                .header(AUTHORIZATION, "Bearer ")
+                .contentType(APPLICATION_JSON)
+                .content(content)
+        );
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/address/2")).andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void shouldUpdateAddressAndReturnStatusCodeCreated() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+
+      content =  mapper.writeValueAsString(TestAddressDataGenerator.generatorRandomAddress());
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/address/1")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+    }
+
+    @Test
+    public void shouldNotUpdateAddressWithIdNonexistentAndReturnStatusCodeCreated() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+
+      content =  mapper.writeValueAsString(TestAddressDataGenerator.generatorRandomAddress());
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.put("/address/2")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void shouldDeleteAddressByIdAndReturnStatusCodeNoContent() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/address/1")).andExpect(status().isNoContent());
+    }
+
+    @Test
+    public void shouldNotDeleteAddressByIdWithIdNonexistentAndReturnStatusCodeNotFound() throws Exception {
+        String content = mapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/address/2")).andExpect(status().isNotFound());
+    }
 
 }

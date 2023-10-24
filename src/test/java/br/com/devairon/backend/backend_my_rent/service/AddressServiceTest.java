@@ -4,14 +4,9 @@ import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
 import br.com.devairon.backend.backend_my_rent.teste_data_generator.TestAddressDataGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -155,7 +150,7 @@ public class AddressServiceTest {
         List<AddressDTO> allAddress = service.getAllAddress();
         assertNotNull(allAddress);
         assertTrue(allAddress.size() > 0);
-        boolean response = service.deleteAddressProperty(1L);
+        boolean response = service.deleteAddress(1L);
         assertTrue(response);
     }
 
@@ -165,7 +160,7 @@ public class AddressServiceTest {
         List<AddressDTO> allAddress = service.getAllAddress();
         assertNotNull(allAddress);
         assertTrue(allAddress.size() > 0);
-        boolean response = service.deleteAddressProperty(2L);
+        boolean response = service.deleteAddress(2L);
         assertFalse(response);
     }
 }
