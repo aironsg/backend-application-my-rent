@@ -51,14 +51,24 @@ public class AddressService implements AddressUseCase {
     @Override
     public Optional<AddressDTO> updateAddressById(AddressDTO request,Long id) {
         Optional<AddressEntity> address = repository.findById(String.valueOf(id));
-        if (address.isPresent()) {
-            address.get().setState(request.getZipCode());
+        if (address.isPresent() && ( !address.get().getZipCode().isEmpty()|| !address.get().getZipCode().isBlank())) {
+            address.get().setZipCode(request.getZipCode());
             address.get().setState(request.getState());
-            address.get().setState(request.getUF());
-            address.get().setState(request.getCity());
-            address.get().setState(request.getNeighborhood());
-            address.get().setState(request.getStreet());
-            address.get().setState(request.getNumber());
+            address.get().setUF(request.getUF());
+            address.get().setCity(request.getCity());
+            address.get().setNeighborhood(request.getNeighborhood());
+            address.get().setStreet(request.getStreet());
+            address.get().setNumber(request.getNumber());
+            repository.save(address.get());
+            return Optional.of(mapper.map(address, AddressDTO.class));
+        }
+        if (address.isPresent()) {
+            address.get().setState(request.getState());
+            address.get().setUF(request.getUF());
+            address.get().setCity(request.getCity());
+            address.get().setNeighborhood(request.getNeighborhood());
+            address.get().setStreet(request.getStreet());
+            address.get().setNumber(request.getNumber());
             repository.save(address.get());
             return Optional.of(mapper.map(address, AddressDTO.class));
         }

@@ -13,11 +13,12 @@ O My-Rent é um sistema de gerenciamento de aluguéis de imóveis que visa propo
     - O sistema permite que os ADMs se cadastrem, escolhendo entre quatro planos: teste, básico, intermediário ou premium, cada um com benefícios específicos.
     - Os campos de registro incluem nome completo, e-mail, CPF, telefone (WhatsApp) e endereço residencial.
     - Após o registro, o sistema envia uma confirmação com informações de login via WhatsApp ou e-mail.
+    - O sistema oferece sugestões de planos com base no número de imóveis cadastrados e permite que o ADM escolha um plano de preferência.
+
 
 2. **Registro de Morador (RF02)**:
     - Os ADMs são responsáveis pelo cadastro dos locatários, baseado nos documentos fornecidos na locação.
     - O cadastro inclui informações como nome completo, CPF, telefone (WhatsApp), e-mail (opcional), quantidade de dependentes, data de aluguel e endereço do imóvel.
-    - O sistema oferece sugestões de planos com base no número de imóveis cadastrados e permite que o ADM escolha um plano de preferência.
 
 3. **Registro de Endereço (RF03)**:
     - O sistema permite o cadastro separado de endereços no banco de dados.
