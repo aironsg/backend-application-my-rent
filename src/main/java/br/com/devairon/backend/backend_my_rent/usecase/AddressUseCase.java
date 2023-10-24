@@ -15,5 +15,5 @@ public interface AddressUseCase {
     Optional<AddressDTO> getAddressById(Long id);
     List<AddressDTO> getAllAddress();
 
-    boolean deleteAddressProperty(Long id);
+    boolean deleteAddress(Long id);
 }

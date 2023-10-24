@@ -85,7 +85,7 @@ public class AddressService implements AddressUseCase {
 
 
     @Override
-    public boolean deleteAddressProperty(Long id) {
+    public boolean deleteAddress(Long id) {
         Optional<AddressEntity> response = repository.findById(String.valueOf(id));
         if(response.isPresent()) {
             repository.deleteById(String.valueOf(response.get().getId()));

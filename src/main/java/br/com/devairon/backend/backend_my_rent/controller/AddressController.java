@@ -6,7 +6,6 @@ import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +35,7 @@ public class AddressController {
 
     @PostMapping
     public ResponseEntity<AddressDTO> createAddress(@RequestBody @Valid  AddressDTO request) {
-        if (request.getZipCode() == null) {
+        if (request.getZipCode() == null || request.getZipCode().isEmpty()) {
             Optional<AddressDTO> responseWithZipCodeNULL = service.createAddressWithFieldZipCodeBlank(request);
             return responseWithZipCodeNULL.map(address -> ResponseEntity.status(HttpStatus.CREATED).body(address))
                     .orElse(ResponseEntity.badRequest().build());
@@ -54,8 +53,8 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAddressProperty(@PathVariable Long id){
-        boolean deleted = service.deleteAddressProperty(id);
+    public ResponseEntity<Void> deleteAddress(@PathVariable Long id){
+        boolean deleted = service.deleteAddress(id);
         return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
