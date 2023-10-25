@@ -38,7 +38,7 @@ public class OwnerService implements OwnerUseCase {
 
     @Override
     public Optional<OwnerDTO> getOwnerByCPF(String cpf) {
-        Optional<OwnerDTO> owner = repository.findByCpf(cpf);
+        Optional<OwnerEntity> owner = repository.findByCpf(cpf);
         return owner.map(response -> mapper.map(response, OwnerDTO.class));
 
     }

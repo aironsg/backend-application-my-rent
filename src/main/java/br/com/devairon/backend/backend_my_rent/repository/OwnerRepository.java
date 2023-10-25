@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface OwnerRepository extends JpaRepository<OwnerEntity, String> {
-    Optional<OwnerDTO> findByCpf(String cpf);
+    Optional<OwnerEntity> findByCpf(String cpf);
 }

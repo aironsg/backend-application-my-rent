@@ -21,8 +21,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AddressServiceTest {
     @Autowired
     private AddressService service;
-    @Autowired
-    private Optional<AddressDTO> response;
 
     private AddressDTO request;
 
