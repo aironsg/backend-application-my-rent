@@ -76,6 +76,43 @@ public class OwnerControllerTest {
                         .content(content)
         ).andExpect(status().isCreated());
     }
+
+    @Test
+    public void shouldCreateAddressPropertyAndReturnStatusCodeCreated() throws Exception {
+        String content = objectMapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/owner")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+
+        String contentAddress = objectMapper.writeValueAsString(address);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/owner/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(contentAddress)
+        ).andExpect(status().isCreated());
+    }
+    @Test
+    public void shouldNotCreateAddressPropertyAndReturnStatusCodeCreated() throws Exception {
+        String content = objectMapper.writeValueAsString(request);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/owner")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(content)
+        ).andExpect(status().isCreated());
+        AddressDTO addressNull = new AddressDTO();
+        String contentAddress = objectMapper.writeValueAsString(addressNull);
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/owner/address")
+                        .header(AUTHORIZATION, "Bearer ")
+                        .contentType(APPLICATION_JSON)
+                        .content(contentAddress)
+        ).andExpect(status().isBadRequest());
+    }
     @Test
     public void shouldCreateOwnerWithEmailNullAndReturnStatusCodeCreated() throws Exception {
         String content = objectMapper.writeValueAsString(requestEmailNULL);

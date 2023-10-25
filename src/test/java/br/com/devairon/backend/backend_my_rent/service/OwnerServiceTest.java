@@ -55,6 +55,25 @@ public class OwnerServiceTest {
         assertEquals(request, response.get());
     }
     @Test
+    public void shouldCreateAddressProperty(){
+        Optional<OwnerDTO> responseOwner = service.createOwner(request);
+        assertNotNull(responseOwner);
+        Optional<AddressDTO> response = service.createAddressProperty(address);
+        assertNotNull(response);
+        assertEquals(address, response.get());
+
+    }
+    @Test
+    public void shouldNotCreateAddressPropertyFieldsNULL(){
+        Optional<OwnerDTO> responseOwner = service.createOwner(request);
+        assertNotNull(responseOwner);
+        AddressDTO addressNull = new AddressDTO();
+        Optional<AddressDTO> response = service.createAddressProperty(addressNull);
+        assertNotNull(response);
+        assertFalse(response.isPresent());
+
+    }
+    @Test
     public void shouldNotCreateOwnerWithFieldsNULL(){
         OwnerDTO ownerDTO = new OwnerDTO();
         Optional<OwnerDTO> response = service.createOwner(ownerDTO);

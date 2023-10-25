@@ -2,7 +2,9 @@ package br.com.devairon.backend.backend_my_rent.service;
 
 import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
 import br.com.devairon.backend.backend_my_rent.domain.dto.OwnerDTO;
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import br.com.devairon.backend.backend_my_rent.domain.entity.OwnerEntity;
+import br.com.devairon.backend.backend_my_rent.repository.AddressRepository;
 import br.com.devairon.backend.backend_my_rent.repository.OwnerRepository;
 import br.com.devairon.backend.backend_my_rent.usecase.OwnerUseCase;
 import org.modelmapper.ModelMapper;
@@ -16,8 +18,15 @@ public class OwnerService implements OwnerUseCase {
 
     @Autowired
     private OwnerRepository repository;
+
+
     @Autowired
     ModelMapper mapper;
+
+
+
+    @Autowired
+    private AddressService addressService;
 
     @Override
     public Optional<OwnerDTO> createOwner(OwnerDTO request) {
@@ -28,6 +37,12 @@ public class OwnerService implements OwnerUseCase {
             return Optional.of(response);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Optional<AddressDTO> createAddressProperty(AddressDTO request) {
+        Optional<AddressDTO> response = addressService.createAddress(request);
+        return response.isPresent() ? response : Optional.empty();
     }
 
     @Override
@@ -46,6 +61,7 @@ public class OwnerService implements OwnerUseCase {
     @Override
     public Optional<OwnerDTO> updateOwner(Long id, OwnerDTO request) {
         Optional<OwnerEntity> owner = repository.findById(String.valueOf(id));
+        //metodo de forma correta
         if (owner.isPresent() && request.getEmail() == null) {
             owner.get().setName(request.getName());
             owner.get().setCpf(request.getCpf());
@@ -66,6 +82,8 @@ public class OwnerService implements OwnerUseCase {
 
         return Optional.empty();
     }
+
+
 
 
     private boolean areRequiredFieldsNotNull(OwnerDTO request) {

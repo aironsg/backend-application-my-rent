@@ -1,5 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.usecase;
 
+import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
 import br.com.devairon.backend.backend_my_rent.domain.dto.OwnerDTO;
 import br.com.devairon.backend.backend_my_rent.domain.entity.OwnerEntity;
 
@@ -10,6 +11,8 @@ public interface OwnerUseCase {
     Optional<OwnerDTO> getOwnerById(Long id);
     Optional<OwnerDTO> getOwnerByCPF(String cpf);
     Optional<OwnerDTO> updateOwner(Long id,OwnerDTO request);
+
+    Optional<AddressDTO> createAddressProperty(AddressDTO request);
 
 
 
