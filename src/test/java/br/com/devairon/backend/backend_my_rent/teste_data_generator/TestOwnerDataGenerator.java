@@ -33,6 +33,49 @@ public class TestOwnerDataGenerator {
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setEmail("teste@teste.com");
         ownerDTO.setCpf("44866522070");
+        ownerDTO.setPhoneNumber("81994911300");
+        ownerDTO.setQuantityProperties(faker.number().numberBetween(1, 25));
+        ownerDTO.setTypePlan(TypePlan.PLAN_TEST);
+        ownerDTO.setPlanStartDate(datenow);
+        ownerDTO.setPlanEndDate(dateplus30days);
+        return ownerDTO;
+    }
+
+    public static OwnerDTO generatorRandomOwnerUpdate(AddressEntity addressEntity) {
+        OwnerDTO ownerDTO = new OwnerDTO();
+        AddressEntity address = addressEntity;
+        ownerDTO.setAddress(address);
+        ownerDTO.setName(faker.name().fullName());
+        ownerDTO.setEmail("email_update@teste.com");
+        ownerDTO.setCpf("44866522070");
+        ownerDTO.setPhoneNumber("81994911300");
+        ownerDTO.setQuantityProperties(faker.number().numberBetween(1, 25));
+        ownerDTO.setTypePlan(TypePlan.PLAN_TEST);
+        ownerDTO.setPlanStartDate(datenow);
+        ownerDTO.setPlanEndDate(dateplus30days);
+        return ownerDTO;
+    }
+
+    public static OwnerDTO generatorRandomOwnerUpdateWithEmailNULL(AddressEntity addressEntity) {
+        OwnerDTO ownerDTO = new OwnerDTO();
+        AddressEntity address = addressEntity;
+        ownerDTO.setAddress(address);
+        ownerDTO.setName(faker.name().fullName());
+        ownerDTO.setCpf("44866522070");
+        ownerDTO.setPhoneNumber("81994911300");
+        ownerDTO.setQuantityProperties(faker.number().numberBetween(1, 25));
+        ownerDTO.setTypePlan(TypePlan.PLAN_TEST);
+        ownerDTO.setPlanStartDate(datenow);
+        ownerDTO.setPlanEndDate(dateplus30days);
+        return ownerDTO;
+    }
+
+    public static OwnerDTO generatorRandomOwnerWithEmailNull(AddressEntity addressEntity) {
+        OwnerDTO ownerDTO = new OwnerDTO();
+        AddressEntity address = addressEntity;
+        ownerDTO.setAddress(address);
+        ownerDTO.setName(faker.name().fullName());
+        ownerDTO.setCpf("44866522070");
         ownerDTO.setPhoneNumber(faker.phoneNumber().phoneNumber());
         ownerDTO.setQuantityProperties(faker.number().numberBetween(1, 25));
         ownerDTO.setTypePlan(TypePlan.PLAN_TEST);

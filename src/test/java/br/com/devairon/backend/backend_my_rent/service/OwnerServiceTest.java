@@ -23,15 +23,18 @@ public class OwnerServiceTest {
 
     //TODO: criar testes que façam a verificação do tempo do plano e tipo de plano
     //TODO: verificar a coverage dos testes e perceber que esta faltando cobertura no cadastro de dados do metodo create
-    OwnerDTO request;
-    OwnerDTO requestUpdate;
+    private OwnerDTO request;
+    private OwnerDTO requestUpdate;
+    private OwnerDTO requestUpdateWithEmailNUll;
+    private OwnerDTO requestCPFInvalid;
+    private OwnerDTO requestEmailNULL;
     AddressDTO address;
     @Autowired
     private OwnerService service;
     @Autowired
     private AddressService addressService;
     @Autowired
-    ModelMapper mapper;
+    private ModelMapper mapper;
     @BeforeEach
     public void setUp() {
         address = TestAddressDataGenerator.generatorRandomAddress();
@@ -39,7 +42,10 @@ public class OwnerServiceTest {
         Optional<AddressDTO> addressResponse = addressService.getAddressById(1L);
         AddressEntity addressEntity = mapper.map(addressResponse, AddressEntity.class);
         request = TestOwnerDataGenerator.generatorRandomOwner(addressEntity);
-        requestUpdate = TestOwnerDataGenerator.generatorRandomOwner(addressEntity);
+        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate(addressEntity);
+        requestUpdateWithEmailNUll = TestOwnerDataGenerator.generatorRandomOwnerUpdateWithEmailNULL(addressEntity);
+        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid(addressEntity);
+        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull(addressEntity);
     }
 
     @Test
@@ -95,6 +101,15 @@ public class OwnerServiceTest {
         assertNotNull(response);
         assertNotEquals(request, response.get());
     }
+    @Test
+    public void shouldUpdateOwnerByIdValidAndEmailNull(){
+        service.createOwner(requestEmailNULL);
+        Optional<OwnerDTO> response = service.updateOwner(1L, requestUpdateWithEmailNUll);
+        assertNotNull(response);
+        assertNotEquals(requestEmailNULL, response.get());
+    }
+
+
 
     @Test
     public void shouldNotUpdateOwnerByIdInvalid(){

@@ -46,9 +46,8 @@ public class OwnerService implements OwnerUseCase {
     @Override
     public Optional<OwnerDTO> updateOwner(Long id, OwnerDTO request) {
         Optional<OwnerEntity> owner = repository.findById(String.valueOf(id));
-        if (owner.isPresent() && (!request.getEmail().isEmpty() || !request.getEmail().isBlank())) {
+        if (owner.isPresent() && request.getEmail() == null) {
             owner.get().setName(request.getName());
-            owner.get().setEmail(request.getEmail());
             owner.get().setCpf(request.getCpf());
             owner.get().setPhoneNumber(request.getPhoneNumber());
             repository.save(owner.get());
@@ -57,11 +56,14 @@ public class OwnerService implements OwnerUseCase {
 
         if (owner.isPresent()) {
             owner.get().setName(request.getName());
+            owner.get().setEmail(request.getEmail());
             owner.get().setCpf(request.getCpf());
             owner.get().setPhoneNumber(request.getPhoneNumber());
             repository.save(owner.get());
             return Optional.of(mapper.map(owner, OwnerDTO.class));
         }
+
+
         return Optional.empty();
     }
 

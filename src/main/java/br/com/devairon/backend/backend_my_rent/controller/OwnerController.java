@@ -33,13 +33,13 @@ public class OwnerController {
                 .orElse(ResponseEntity.badRequest().build());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<OwnerDTO> getOwnerById(@PathVariable Long id) {
         Optional<OwnerDTO> response = service.getOwnerById(id);
         return response.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{cpf}")
+    @GetMapping("/cpf/{cpf}")
     public ResponseEntity<OwnerDTO> getOwnerByCPF(@PathVariable String cpf) {
         Optional<OwnerDTO> response = service.getOwnerByCPF(cpf);
         return response.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
