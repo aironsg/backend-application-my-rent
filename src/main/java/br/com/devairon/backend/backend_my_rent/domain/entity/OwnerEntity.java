@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity(name = "owner")
@@ -16,6 +17,8 @@ public class OwnerEntity extends UserEntity {
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity address;
-    private TypeUser type;
     private TypePlan typePlan;
+    private LocalDate planStartDate;
+    private LocalDate planEndDate;
+    private int quantityProperties;
 }

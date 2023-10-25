@@ -1,6 +1,7 @@
 package br.com.devairon.backend.backend_my_rent.teste_data_generator;
 
 import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
+import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import com.github.javafaker.Faker;
 
 public class TestAddressDataGenerator {
@@ -17,6 +18,18 @@ public class TestAddressDataGenerator {
         addressDTO.setStreet(faker.address().streetName());
         addressDTO.setNumber(faker.address().buildingNumber());
         return addressDTO;
+    }
+
+    public static AddressEntity generatorRandomAddressEntity(){
+        AddressEntity address = new AddressEntity();
+        address.setZipCode(faker.address().zipCode());
+        address.setState(faker.address().state());
+        address.setUF(faker.address().state());
+        address.setCity(faker.address().cityName());
+        address.setNeighborhood(faker.address().city());
+        address.setStreet(faker.address().streetName());
+        address.setNumber(faker.address().buildingNumber());
+        return address;
     }
 
     public static AddressDTO generatorRandomAddressWithFieldZipCodeBlank(){
