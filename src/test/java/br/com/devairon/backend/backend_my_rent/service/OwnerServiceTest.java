@@ -41,11 +41,11 @@ public class OwnerServiceTest {
        addressService.createAddress(address);
         Optional<AddressDTO> addressResponse = addressService.getAddressById(1L);
         AddressEntity addressEntity = mapper.map(addressResponse, AddressEntity.class);
-        request = TestOwnerDataGenerator.generatorRandomOwner(addressEntity);
-        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate(addressEntity);
-        requestUpdateWithEmailNUll = TestOwnerDataGenerator.generatorRandomOwnerUpdateWithEmailNULL(addressEntity);
-        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid(addressEntity);
-        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull(addressEntity);
+        request = TestOwnerDataGenerator.generatorRandomOwner();
+        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate();
+        requestUpdateWithEmailNUll = TestOwnerDataGenerator.generatorRandomOwnerUpdateWithEmailNULL();
+        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid();
+        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull();
     }
 
     @Test
@@ -53,6 +53,25 @@ public class OwnerServiceTest {
         Optional<OwnerDTO> response = service.createOwner(request);
         assertNotNull(response);
         assertEquals(request, response.get());
+    }
+    @Test
+    public void shouldCreateAddressProperty(){
+        Optional<OwnerDTO> responseOwner = service.createOwner(request);
+        assertNotNull(responseOwner);
+        Optional<AddressDTO> response = service.createAddressProperty(address);
+        assertNotNull(response);
+        assertEquals(address, response.get());
+
+    }
+    @Test
+    public void shouldNotCreateAddressPropertyFieldsNULL(){
+        Optional<OwnerDTO> responseOwner = service.createOwner(request);
+        assertNotNull(responseOwner);
+        AddressDTO addressNull = new AddressDTO();
+        Optional<AddressDTO> response = service.createAddressProperty(addressNull);
+        assertNotNull(response);
+        assertFalse(response.isPresent());
+
     }
     @Test
     public void shouldNotCreateOwnerWithFieldsNULL(){

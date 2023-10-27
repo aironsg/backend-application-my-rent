@@ -26,10 +26,8 @@ public class TestOwnerDataGenerator {
 
 
 
-    public static OwnerDTO generatorRandomOwner(AddressEntity addressEntity) {
+    public static OwnerDTO generatorRandomOwner() {
         OwnerDTO ownerDTO = new OwnerDTO();
-        AddressEntity address = addressEntity;
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setEmail("teste@teste.com");
         ownerDTO.setCpf("44866522070");
@@ -41,10 +39,8 @@ public class TestOwnerDataGenerator {
         return ownerDTO;
     }
 
-    public static OwnerDTO generatorRandomOwnerUpdate(AddressEntity addressEntity) {
+    public static OwnerDTO generatorRandomOwnerUpdate() {
         OwnerDTO ownerDTO = new OwnerDTO();
-        AddressEntity address = addressEntity;
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setEmail("email_update@teste.com");
         ownerDTO.setCpf("44866522070");
@@ -56,10 +52,8 @@ public class TestOwnerDataGenerator {
         return ownerDTO;
     }
 
-    public static OwnerDTO generatorRandomOwnerUpdateWithEmailNULL(AddressEntity addressEntity) {
+    public static OwnerDTO generatorRandomOwnerUpdateWithEmailNULL() {
         OwnerDTO ownerDTO = new OwnerDTO();
-        AddressEntity address = addressEntity;
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setCpf("44866522070");
         ownerDTO.setPhoneNumber("81994911300");
@@ -70,10 +64,8 @@ public class TestOwnerDataGenerator {
         return ownerDTO;
     }
 
-    public static OwnerDTO generatorRandomOwnerWithEmailNull(AddressEntity addressEntity) {
+    public static OwnerDTO generatorRandomOwnerWithEmailNull() {
         OwnerDTO ownerDTO = new OwnerDTO();
-        AddressEntity address = addressEntity;
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setCpf("44866522070");
         ownerDTO.setPhoneNumber(faker.phoneNumber().phoneNumber());
@@ -83,10 +75,8 @@ public class TestOwnerDataGenerator {
         ownerDTO.setPlanEndDate(dateplus30days);
         return ownerDTO;
     }
-    public static OwnerDTO generatorRandomOwnerWithCPFInvalid(AddressEntity addressEntity) {
+    public static OwnerDTO generatorRandomOwnerWithCPFInvalid() {
         OwnerDTO ownerDTO = new OwnerDTO();
-        AddressEntity address = addressEntity;
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setEmail("teste@teste.com");
         ownerDTO.setCpf("4486652207023");//cpf invalido
@@ -101,7 +91,6 @@ public class TestOwnerDataGenerator {
     public static OwnerDTO generatorRandomOwnerWithEmailBlank() {
         OwnerDTO ownerDTO = new OwnerDTO();
         AddressEntity address = TestAddressDataGenerator.generatorRandomAddressEntity();
-        ownerDTO.setAddress(address);
         ownerDTO.setName(faker.name().fullName());
         ownerDTO.setCpf("00011122233");
         ownerDTO.setPhoneNumber(faker.phoneNumber().phoneNumber());

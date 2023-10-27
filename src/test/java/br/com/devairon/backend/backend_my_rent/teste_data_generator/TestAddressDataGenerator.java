@@ -20,6 +20,7 @@ public class TestAddressDataGenerator {
         return addressDTO;
     }
 
+
     public static AddressEntity generatorRandomAddressEntity(){
         AddressEntity address = new AddressEntity();
         address.setZipCode(faker.address().zipCode());

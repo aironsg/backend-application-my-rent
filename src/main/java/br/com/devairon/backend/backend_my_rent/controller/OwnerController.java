@@ -1,5 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.controller;
 
+import br.com.devairon.backend.backend_my_rent.domain.dto.AddressDTO;
 import br.com.devairon.backend.backend_my_rent.domain.dto.OwnerDTO;
 import br.com.devairon.backend.backend_my_rent.service.OwnerService;
 import jakarta.validation.Valid;
@@ -30,6 +31,13 @@ public class OwnerController {
         }
         Optional<OwnerDTO> responseWithEmailNULL = service.createOwner(request);
         return responseWithEmailNULL.map(owner -> ResponseEntity.status(HttpStatus.CREATED).body(owner))
+                .orElse(ResponseEntity.badRequest().build());
+    }
+
+    @PostMapping("/address")
+    public ResponseEntity<AddressDTO> createAddressProperty(@Valid @RequestBody AddressDTO request){
+        Optional<AddressDTO> response = service.createAddressProperty(request);
+        return response.map(address -> ResponseEntity.status(HttpStatus.CREATED).body(address))
                 .orElse(ResponseEntity.badRequest().build());
     }
 
