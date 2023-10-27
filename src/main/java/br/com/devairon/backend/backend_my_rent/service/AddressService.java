@@ -21,15 +21,16 @@ public class AddressService implements AddressUseCase {
 
     @Autowired
     private ModelMapper mapper;
+
     @Override
     public Optional<AddressDTO> createAddress(AddressDTO request) {
-     if(areRequiredFieldsNotNull(request)){
-         AddressEntity address = mapper.map(request, AddressEntity.class);
-         repository.save(address);
-         AddressDTO response = mapper.map(request, AddressDTO.class);
-         return Optional.of(response);
-     }
-     return Optional.empty();
+        if (areRequiredFieldsNotNull(request)) {
+            AddressEntity address = mapper.map(request, AddressEntity.class);
+            repository.save(address);
+            AddressDTO response = mapper.map(request, AddressDTO.class);
+            return Optional.of(response);
+        }
+        return Optional.empty();
     }
 
     private boolean areRequiredFieldsNotNull(AddressDTO request) {
@@ -49,36 +50,43 @@ public class AddressService implements AddressUseCase {
     }
 
     @Override
-    public Optional<AddressDTO> updateAddressById(AddressDTO request,Long id) {
+    public Optional<AddressDTO> updateAddressById(AddressDTO request, Long id) {
         Optional<AddressEntity> address = repository.findById(String.valueOf(id));
-        if (address.isPresent() && ( !address.get().getZipCode().isEmpty()|| !address.get().getZipCode().isBlank())) {
-            address.get().setZipCode(request.getZipCode());
-            address.get().setState(request.getState());
-            address.get().setUF(request.getUF());
-            address.get().setCity(request.getCity());
-            address.get().setNeighborhood(request.getNeighborhood());
-            address.get().setStreet(request.getStreet());
-            address.get().setNumber(request.getNumber());
-            repository.save(address.get());
-            return Optional.of(mapper.map(address, AddressDTO.class));
-        }
         if (address.isPresent()) {
-            address.get().setState(request.getState());
-            address.get().setUF(request.getUF());
-            address.get().setCity(request.getCity());
-            address.get().setNeighborhood(request.getNeighborhood());
-            address.get().setStreet(request.getStreet());
+            if (request.getZipCode() != null) {
+                address.get().setZipCode(request.getZipCode());
+            }
+
+            if (request.getState() != null) {
+                address.get().setState(request.getState());
+            }
+            if (request.getCity() != null) {
+                address.get().setCity(request.getCity());
+            }
+            if (request.getUF() != null) {
+                address.get().setUF(request.getUF());
+            }
+            if (request.getNeighborhood() != null) {
+                address.get().setNeighborhood(request.getNeighborhood());
+            }
+            if (request.getStreet() != null) {
+                address.get().setStreet(request.getStreet());
+            }
+            if (request.getNumber() != null) {
             address.get().setNumber(request.getNumber());
+
+            }
             repository.save(address.get());
             return Optional.of(mapper.map(address, AddressDTO.class));
         }
+
         return Optional.empty();
     }
 
     @Override
     public Optional<AddressDTO> getAddressById(Long id) {
-           Optional<AddressEntity> address = repository.findById(String.valueOf(id));
-           return address.map(response -> mapper.map(response, AddressDTO.class));
+        Optional<AddressEntity> address = repository.findById(String.valueOf(id));
+        return address.map(response -> mapper.map(response, AddressDTO.class));
     }
 
     @Override
@@ -93,11 +101,10 @@ public class AddressService implements AddressUseCase {
     }
 
 
-
     @Override
     public boolean deleteAddress(Long id) {
         Optional<AddressEntity> response = repository.findById(String.valueOf(id));
-        if(response.isPresent()) {
+        if (response.isPresent()) {
             repository.deleteById(String.valueOf(response.get().getId()));
             return true;
         }

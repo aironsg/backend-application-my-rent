@@ -2,26 +2,32 @@ package br.com.devairon.backend.backend_my_rent.domain.dto;
 
 import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
 import br.com.devairon.backend.backend_my_rent.domain.enums.OccupationStatus;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class PropertyDTO
  {
-        Long id;
+        //Long id;
+
         @NotBlank
         @NotNull
-        String description;
+        private String description;
+
         @Positive
-        int quantityRooms;
+        private int quantityRooms;
+
         @Positive
-        double rentValue;
-        AddressEntity addressProperty;
-        OccupationStatus occupationStatus;
+        private double rentValue;
+
+        @NotNull
+        private AddressEntity addressProperty;
+
+        private OccupationStatus occupationStatus;
 }

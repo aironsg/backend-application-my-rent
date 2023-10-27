@@ -14,9 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class OwnerEntity extends UserEntity {
-    @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private AddressEntity address;
+
     private TypePlan typePlan;
     private LocalDate planStartDate;
     private LocalDate planEndDate;

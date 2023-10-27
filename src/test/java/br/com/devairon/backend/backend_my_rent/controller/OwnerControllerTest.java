@@ -60,10 +60,10 @@ public class OwnerControllerTest {
         addressService.createAddress(address);
         Optional<AddressDTO> addressResponse = addressService.getAddressById(1L);
         AddressEntity addressEntity = mapper.map(addressResponse, AddressEntity.class);
-        request = TestOwnerDataGenerator.generatorRandomOwner(addressEntity);
-        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate(addressEntity);
-        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid(addressEntity);
-        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull(addressEntity);
+        request = TestOwnerDataGenerator.generatorRandomOwner();
+        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate();
+        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid();
+        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull();
     }
 
     @Test

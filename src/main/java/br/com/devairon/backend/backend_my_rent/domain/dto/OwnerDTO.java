@@ -34,8 +34,7 @@ public class OwnerDTO {
     @NotBlank
     @Size(max = 15)
     private String cpf;
-    @NotNull
-    private AddressEntity address;
+
     @Positive
     private int quantityProperties;
 

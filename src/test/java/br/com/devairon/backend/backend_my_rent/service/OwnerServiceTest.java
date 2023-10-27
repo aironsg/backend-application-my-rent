@@ -41,11 +41,11 @@ public class OwnerServiceTest {
        addressService.createAddress(address);
         Optional<AddressDTO> addressResponse = addressService.getAddressById(1L);
         AddressEntity addressEntity = mapper.map(addressResponse, AddressEntity.class);
-        request = TestOwnerDataGenerator.generatorRandomOwner(addressEntity);
-        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate(addressEntity);
-        requestUpdateWithEmailNUll = TestOwnerDataGenerator.generatorRandomOwnerUpdateWithEmailNULL(addressEntity);
-        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid(addressEntity);
-        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull(addressEntity);
+        request = TestOwnerDataGenerator.generatorRandomOwner();
+        requestUpdate = TestOwnerDataGenerator.generatorRandomOwnerUpdate();
+        requestUpdateWithEmailNUll = TestOwnerDataGenerator.generatorRandomOwnerUpdateWithEmailNULL();
+        requestCPFInvalid = TestOwnerDataGenerator.generatorRandomOwnerWithCPFInvalid();
+        requestEmailNULL = TestOwnerDataGenerator.generatorRandomOwnerWithEmailNull();
     }
 
     @Test

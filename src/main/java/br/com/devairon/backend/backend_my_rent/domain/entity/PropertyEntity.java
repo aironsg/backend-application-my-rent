@@ -17,9 +17,10 @@ public class PropertyEntity {
     private int quantityRooms;
     private double rentValue;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private AddressEntity addressProperty;
+
     private OccupationStatus occupationStatus;
 
 }
