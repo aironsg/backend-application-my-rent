@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -78,7 +79,26 @@ public class PropertyServiceTest {
     }
 
 
+    @Test
+    public void shouldGetAllProperties(){
+        Optional<AddressEntity> addressById;
+        for(int i=1; i<= 4; i++){
+            Long id = Long.parseLong(String.valueOf(i));
+            ownerService.createAddressProperty(addressDTO);
+            addressById = addressService.getAddressById(id).map(AddressEntity::new);
+            request = TestPropertyDataGenerator.generatorRandomProperty(addressById);
+            service.createProperty(request);
+        }
+        List<PropertyDTO> allProperties = service.getAllProperties();
+        assertTrue(allProperties.size() == 4);
 
+    }
+    @Test
+    public void shouldReturnListEmpty(){
+        List<PropertyDTO> allProperties = service.getAllProperties();
+        assertTrue(allProperties.isEmpty());
+
+    }
 
 
 
