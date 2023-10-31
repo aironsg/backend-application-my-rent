@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -38,7 +39,9 @@ public class OwnerDTO {
     @NotNull
     private TypePlan typePlan;
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate planStartDate;
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate planEndDate;
 }

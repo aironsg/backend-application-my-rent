@@ -17,8 +17,8 @@ public class TenantEntity extends  UserEntity{
     private int quantityDepedents;
 
     @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private AddressEntity address;
+    @JoinColumn(name = "property_id", referencedColumnName = "id")
+    private PropertyEntity property;
 
     private TypeUser typeUser;
 

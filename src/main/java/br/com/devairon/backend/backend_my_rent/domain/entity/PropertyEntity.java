@@ -1,5 +1,6 @@
 package br.com.devairon.backend.backend_my_rent.domain.entity;
 
+import br.com.devairon.backend.backend_my_rent.domain.dto.PropertyDTO;
 import br.com.devairon.backend.backend_my_rent.domain.enums.OccupationStatus;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -23,4 +24,11 @@ public class PropertyEntity {
 
     private OccupationStatus occupationStatus;
 
+    public PropertyEntity(PropertyDTO propertyDTO) {
+        this.description = propertyDTO.getDescription();
+        this.quantityRooms = propertyDTO.getQuantityRooms();
+        this.rentValue = propertyDTO.getRentValue();
+        this.addressProperty = getAddressProperty();
+        this.occupationStatus = propertyDTO.getOccupationStatus();
+    }
 }

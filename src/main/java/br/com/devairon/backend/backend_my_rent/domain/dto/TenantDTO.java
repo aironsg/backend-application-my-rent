@@ -1,6 +1,7 @@
 package br.com.devairon.backend.backend_my_rent.domain.dto;
 
-import br.com.devairon.backend.backend_my_rent.domain.entity.AddressEntity;
+import br.com.devairon.backend.backend_my_rent.domain.entity.PropertyEntity;
+import br.com.devairon.backend.backend_my_rent.domain.enums.TypeUser;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -43,5 +44,7 @@ public class TenantDTO
         int quantityDependents;
 
         @NotNull
-        AddressEntity addressProperty;
+        PropertyEntity property;
+
+        @NotNull TypeUser typeUser;
 }
