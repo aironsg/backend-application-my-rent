@@ -24,6 +24,7 @@ public class PropertyController {
 
     @PostMapping
     public ResponseEntity<PropertyDTO> createProperty(@Valid @RequestBody PropertyDTO request) {
+        //TODO:fazer o tratamento de exceção customizada antes de enviar o dado para o service
         Optional<PropertyDTO> response = service.createProperty(request);
         return response.map(property -> ResponseEntity.status(HttpStatus.CREATED).body(property))
                 .orElse(ResponseEntity.badRequest().build());
@@ -40,17 +41,29 @@ public class PropertyController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/property/{id}")
+    @PutMapping("/id/{id}")
     public ResponseEntity<PropertyDTO> updateProperty(@PathVariable Long id,@Valid @RequestBody PropertyDTO request){
         Optional<PropertyDTO> response = service.updateProperty(id, request);
-        return response.map(property -> ResponseEntity.status(HttpStatus.OK).body(property))
+        return response.map(property -> ResponseEntity.status(HttpStatus.CREATED).body(property))
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/inactive/id/{id}")
     public ResponseEntity<Boolean> inactiveProperty(@PathVariable Long id){
         Optional<Boolean> response = service.inactiveProperty(id);
-        return response.map(property -> ResponseEntity.status(HttpStatus.CREATED).body(property))
-                .orElse(ResponseEntity.notFound().build());
+        if(response.get()){
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Boolean> deleteProperty(@PathVariable Long id){
+        Optional<Boolean> response = service.deleteProperty(id);
+        if(response.get()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }

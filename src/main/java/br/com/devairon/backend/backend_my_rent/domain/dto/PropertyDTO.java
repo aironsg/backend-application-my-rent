@@ -17,7 +17,6 @@ public class PropertyDTO
         //Long id;
 
         @NotBlank
-        @NotNull
         private String description;
 
         @Positive

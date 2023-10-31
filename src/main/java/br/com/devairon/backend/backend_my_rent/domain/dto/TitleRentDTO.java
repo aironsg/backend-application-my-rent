@@ -17,22 +17,30 @@ import java.time.LocalDate;
 public class TitleRentDTO
  {
         Long id;
+
         @NotNull
         TenantEntity tenant;
+
         @NotNull
         OwnerEntity owner;
+
         @NotNull
         AddressEntity addressProperty;
+
         @NotNull
         PropertyEntity property;
+
         @Positive
         double valueRent;
+
         @Positive
         int contractLengthInMonths;
+
         boolean active;
 
         @NotNull
         LocalDate contractStartDate;
+
         @NotNull
         LocalDate contractEndDate;
 }

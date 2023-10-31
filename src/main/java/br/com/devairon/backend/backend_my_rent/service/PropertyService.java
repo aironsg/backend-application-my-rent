@@ -32,6 +32,7 @@ public class PropertyService implements PropertyUseCase {
             PropertyEntity property = mapper.map(request, PropertyEntity.class);
             PropertyEntity response = repository.save(property);
             return Optional.of(mapper.map(response, PropertyDTO.class));
+
         }
         return Optional.empty();
 
@@ -62,31 +63,34 @@ public class PropertyService implements PropertyUseCase {
         if (property.isPresent()) {
             PropertyEntity propertyEntity = mapper.map(property, PropertyEntity.class);
             if (request.getQuantityRooms() != property.get().getQuantityRooms()) {
+
                 propertyEntity.setQuantityRooms(request.getQuantityRooms());
             }
-            if (request.getDescription() != property.get().getDescription()) {
+            if (!request.getDescription().equals(property.get().getDescription())) {
                 propertyEntity.setDescription(request.getDescription());
             }
-            if (request.getAddressProperty() != property.get().getAddressProperty()) {
-                propertyEntity.setAddressProperty(request.getAddressProperty());
-            }
-            if (request.getOccupationStatus() != property.get().getOccupationStatus()) {
+
+            if (!request.getOccupationStatus().equals(property.get().getOccupationStatus())) {
                 propertyEntity.setOccupationStatus(request.getOccupationStatus());
             }
             if (request.getRentValue() != property.get().getRentValue()) {
                 propertyEntity.setRentValue(request.getRentValue());
             }
-            PropertyEntity response = repository.save(propertyEntity);
-            Optional.of(mapper.map(response, PropertyDTO.class));
+            repository.save(propertyEntity);
+            return Optional.of(mapper.map(propertyEntity, PropertyDTO.class));
         }
         return Optional.empty();
     }
 
     @Override
-    public Optional<PropertyDTO> deleteProperty(Long id) {
+    public Optional<Boolean> deleteProperty(Long id) {
         //TODO: implement deleteProperty
         Optional<PropertyEntity> property = repository.findById(String.valueOf(id));
-        return Optional.empty();
+        if (property.isPresent()) {
+            repository.deleteById(String.valueOf(property.get().getId()));
+            return Optional.of(true);
+        }
+        return Optional.of(false);
     }
 
     @Override
@@ -95,7 +99,7 @@ public class PropertyService implements PropertyUseCase {
         if (property.isPresent()) {
             property.get().setOccupationStatus(OccupationStatus.UNOCCUPIED);
             repository.save(mapper.map(property, PropertyEntity.class));
-            Optional.of(true);
+            return Optional.of(true);
         }
         return Optional.of(false);
     }

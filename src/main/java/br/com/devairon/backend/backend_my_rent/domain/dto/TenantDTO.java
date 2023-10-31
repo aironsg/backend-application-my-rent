@@ -19,19 +19,20 @@ public class TenantDTO
 
  {
         Long id;
+
         @NotBlank
-        @NotNull
         @Size(min = 5, max = 30)
         String name;
+
         @NotBlank
-        @NotNull
         @Size(min = 8, max = 13)
         String phoneNumber;
+
         @Email
         @Column(nullable = true)
         String email;
+
         @CPF
-        @NotNull
         @NotBlank
         String cpf;
 
@@ -39,7 +40,6 @@ public class TenantDTO
         LocalDate rentDate;
 
         @NotNull
-        @NotBlank
         int quantityDependents;
 
         @NotNull

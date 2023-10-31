@@ -11,7 +11,7 @@ public interface PropertyUseCase {
     List<PropertyDTO> getAllProperties();
     Optional<PropertyDTO> getPropertyById(Long id);
     Optional<PropertyDTO> updateProperty(Long id,PropertyDTO request);
-    Optional<PropertyDTO> deleteProperty(Long id);
+    Optional<Boolean> deleteProperty(Long id);
     Optional<Boolean> inactiveProperty(Long id);
 
 }
