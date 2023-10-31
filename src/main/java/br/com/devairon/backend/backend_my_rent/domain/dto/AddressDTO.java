@@ -10,28 +10,28 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddressDTO{
+public class AddressDTO {
 
-        Long id;
-        String zipCode;
-        @NotNull
-        @NotBlank
-        String state;
-        @NotNull
-        @NotBlank
-        String UF;
-        @NotNull
-        @NotBlank
-        String city;
-        @NotNull
-        @NotBlank
-        String neighborhood;
-        @NotNull
-        @NotBlank
-        String street;
-        @NotNull
-        @NotBlank
-        String number;
+    Long id;
+    String zipCode;
+
+    @NotBlank
+    String state;
+
+    @NotBlank
+    String UF;
+
+    @NotBlank
+    String city;
+
+    @NotBlank
+    String neighborhood;
+
+    @NotBlank
+    String street;
+
+    @NotBlank
+    String number;
 
 
 }

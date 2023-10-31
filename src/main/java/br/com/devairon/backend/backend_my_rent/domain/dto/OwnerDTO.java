@@ -19,18 +19,15 @@ public class OwnerDTO {
 
     private Long id;
     @NotBlank
-    @NotNull
     @Size(min = 5, max = 30)
     private String name;
     @NotBlank
-    @NotNull
     @Size(min = 8, max = 18)
     private String phoneNumber;
     @Email
     @Column(nullable = true)
     private String email;
     @CPF
-    @NotNull
     @NotBlank
     @Size(max = 15)
     private String cpf;
